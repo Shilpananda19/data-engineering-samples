@@ -27,3 +27,19 @@ derived from raw transactional data. Common challenges include:
 - Designed dimensional-style data models using CTEs
 - Applied window functions for rolling metrics
 - Optimized queries for analytics use cases
+
+- -- Fact table
+CREATE TABLE fact_encounters (
+    encounter_id        NUMBER PRIMARY KEY,
+    encounter_date      DATE,
+    encounter_subtype   VARCHAR2(50),
+    source_system       VARCHAR2(20)
+);
+
+-- Reference / utilization table
+CREATE TABLE ref_utilization (
+    encounter_id        NUMBER,
+    encounter_subtype   VARCHAR2(50),
+    source_system       VARCHAR2(20)
+);
+
